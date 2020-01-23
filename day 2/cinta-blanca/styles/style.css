@@ -1,0 +1,41 @@
+/* Afecta a todos los elementos del sitio */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Por tag */
+p { 
+    color: #0010ec;
+}
+
+body {
+    background: lightblue;
+}
+
+/* por clase */
+.par {
+    color: green;
+}
+
+.box {
+    background: green;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.impar{
+    color: blue;
+}
+
+.littlebox{
+    background: hotpink;
+    height: 50px;
+    width: 50px;
+    border: 3px dashed blue;
+}
+
+/* por ID */
+#seven{
+    color: gold;
+}
