@@ -60,11 +60,21 @@ class Construction {
 }
 
 class House extends Construction {        
-    constructor();
+    constructor(doors, windows, floors, address, height, length, width){
+        super(doors, windows, floors, address, height, length, windows);        
+    }
+    
 }
 
 class Building extends Construction {
-    constructor();
+    constructor(doors, windows, floors, address, height, length, width){
+        super(doors, windows, floors, address, height, length, windows);        
+    }
+    
 }
 
+// Test ---------------------------------
+let elLab = new Building(2, 10, 2, '', 10, );
+
 // #3
+
