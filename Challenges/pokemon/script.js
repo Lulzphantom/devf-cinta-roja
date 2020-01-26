@@ -85,9 +85,10 @@ const showPokemon = pokemon => {
 
 
     let movesCount = 0;
+    const maxMoves = 10;
     pokemon.moves.forEach(move => { 
       
-      if (movesCount === 5) {
+      if (movesCount === maxMoves) {
         return;
       }     
 
@@ -95,6 +96,6 @@ const showPokemon = pokemon => {
       li.textContent = move.move.name;
       pokeinfo.appendChild(li)
       movesCount ++;
-    });
+    });    
     
 }
