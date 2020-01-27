@@ -1,4 +1,4 @@
-const pokemonApi = require('./modules/pokemon');
+const pokeModule = require('./modules/pokemon');
 
 class Pokemon {
     constructor(id, name, sprites, moves, height, weight) {
@@ -12,31 +12,23 @@ class Pokemon {
 }
 
 const catchThemAll = (pokemon) => {
-    console.log(pokemon);
-    //console.log(new Pokemon(pokemon.id, pokemon.name, pokemon.sprites, pokemon.moves, pokemon.height, pokemon.weight));
+    console.log(new Pokemon(pokemon.id, pokemon.name, pokemon.sprites, pokemon.moves, pokemon.height, pokemon.weight));
 }
 
 //Get pokemon using request
-// let pokemon = new pokemonApi('ditto').getPokeByRequest()
-//     .then((poke) => catchThemAll(poke))
-//     .catch((err) => console.log(err));
+let pokemonByRq = new pokeModule('ditto').getPokeByRequest()
+    .then((request) => catchThemAll(poke))
+    .catch((err) => console.log(err));
 
 
 //Get pokemon using request promise
-let pokemonrq = new pokemonApi('ditto').getPokeByRequestPromise()
-    .then((pokemon) => pokemon.statusCode === 200 ? catchThemAll(pokemon) : console.log(`Error ${pokemon.statusCode}`))
-    .catch((err) => console.log(err));
+let pokemonByRqp = new pokeModule('ditto').getPokeByRequestPromise()
+    .then((request) => request.statusCode === 200 ? catchThemAll(request.body) : console.log(`Error ${request.statusCode}`))
+    .catch((err) => console.log(`Error ${err}`));
     
 
 
 //Get pokemon using pokeapi
-
-// let pokemon2 = new pokemonApi('pikachu').getPokeByPokeAPI();
-// catchThemAll(pokemon2);
-
-
-
-// pokemonApi.getPokemon('ditto')
-//     .then((pokemon) => console.log(pokemon))
-//     .catch((error) => console.log(error));
-
+let pokemonByApi = new pokeModule('ditto').getPokeByPokeAPI()
+    .then((pokemon) => catchThemAll(pokemon))
+    .catch((err) => console.log(`Error ${err}`));

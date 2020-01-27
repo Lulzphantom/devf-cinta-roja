@@ -1,8 +1,8 @@
 const request   = require('request');
 const rp        = require('request-promise');
-const pokeapi   = require('pokeapi');
+const pokeapi   = require('pokedex-promise-v2');
 
-module.exports = class PokemonApi {
+module.exports = class pokeModule {
     constructor(pokemonName) {
         this.pokemonName = pokemonName;
     }
@@ -22,35 +22,14 @@ module.exports = class PokemonApi {
     getPokeByRequestPromise = () => {
         var options = {
             uri: `https://pokeapi.co/api/v2/pokemon/${this.pokemonName}/`,            
-            json: true
+            json: true,
+            resolveWithFullResponse: true
         };        
-        return rp(options).promise()
-            .then(function (pokemon) {
-                console.log(pokemon);
-                return pokemon;             
-            })
-            .catch(function (err) {
-                return err;
-            });
+        return rp(options).promise();
     }
 
     getPokeByPokeAPI = () => {
-        var api = pokeapi.v1();
-
-        api.get('pokemon', 1)
-            .then((pokemon) => {
-                console.log(pokemon);
-            })
-
-
-        
-        // api.get('pokemon', 1).then(function(bulbasaur) {
-        //     console.log("Here's Bulbasaur:", bulbasaur);
-        //     api.get(bulbasaur.moves).then(function(moves) {
-        //         console.log("Full move list:" + moves);
-        //     })
-        // }, function(err) {
-        //     console.log('ERROR', err);
-        // });
+        let P = new pokeapi();
+        return P.getPokemonByName(this.pokemonName);    
     }
 };

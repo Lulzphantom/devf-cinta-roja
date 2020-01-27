@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "pokeapi": "0.0.1",
+    "pokedex-promise-v2": "^3.2.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
   }
