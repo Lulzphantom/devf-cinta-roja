@@ -1,0 +1,17 @@
+{
+  "name": "day-5",
+  "version": "1.0.0",
+  "description": "day 5 proyect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "christian",
+  "license": "ISC",
+  "dependencies": {
+    "pokedex-promise-v2": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  }
+}

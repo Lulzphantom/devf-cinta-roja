@@ -15,6 +15,7 @@ const catchThemAll = (pokemon) => {
     console.log(new Pokemon(pokemon.id, pokemon.name, pokemon.sprites, pokemon.moves, pokemon.height, pokemon.weight));
 }
 
+
 //Get pokemon using request
 let pokemonByRq = new pokeModule('ditto').getPokeByRequest()
     .then((request) => catchThemAll(poke))
