@@ -6,7 +6,7 @@ module.exports = class books {
     constructor(value){
         this.value = value
     }
-
+    
     GetBookInfo = () => {
         
         var options = {
@@ -17,12 +17,13 @@ module.exports = class books {
     }
 
     GetAuthorBooks = () => {
-        rq = new reqProm(`${booksApiUrl}author=${this.value}`)
-            .then((result) => {
-                
-            }).catch((err) => {
-                
-            });
+
+        var options = {
+            uri: `${booksApiUrl}author=${this.value}`,
+            json: true
+        };
+
+        return new reqProm(options);
     }
 
 }

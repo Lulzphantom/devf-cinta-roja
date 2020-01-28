@@ -1,7 +1,7 @@
 const pokeapi = require('pokedex-promise-v2');
 
 class pokemonModel{
-    constructor(id, name, sprites, moves, height, weight) {
+    constructor(id, name, moves, height, weight) {
         this.id = id,
         this.name = name,
         this.moves  = moves,
