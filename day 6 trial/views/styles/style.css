@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    margin-top: 10px;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    background: #1F4662;
+}
+
+h3{
+    margin-left: 40px;
+    color: #0088ff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;    
+    font-weight: 100;
+}
+
+.code li{
+    list-style: none;
+    
+}
+
+.code li a{
+    color: #ff9d00;
+    text-decoration: none;
+}
+
+.number_lines{
+    background: #163042;
+    color: gray;
+    padding-right: 20px;
+}
+
+.parentesis{
+    color: #ffc600;
+}
+
