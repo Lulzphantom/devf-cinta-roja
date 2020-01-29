@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 //use bodyparser to detect json in body
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 
 //declare views in node.js
 const home = `${__dirname}/views/index.html`
@@ -22,8 +22,13 @@ app.get('/name', (request, response) => {
 //post endpoint 'suma'
 app.post('/suma', (request, response) => {
     const {num1, num2} = request.body;
-    console.log(request.body);
-    response.status(200).send(num1 + num2);
+    // console.log(request.body);
+    response.status(200).send(`${num1} ${num2}`);
+});
+
+app.get('/suma', (request, response) => {
+    
+    response.status(200).send(request.query); //`count ${Object.keys(request.query).length}`
 });
 
 

@@ -99,6 +99,7 @@ poke = new pokemodule(pokeIds).getPokemonById()
     });
 }).catch((err) => {
     console.log(`Error: ${err}`);
+    
 }); 
 
 
