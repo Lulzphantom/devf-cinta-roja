@@ -17,6 +17,13 @@ h3{
     font-weight: 100;
 }
 
+.comment{
+    margin-left: 40px;
+    color: #0088ff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;  
+}
+
 .code li{
     list-style: none;
     
@@ -30,10 +37,18 @@ h3{
 .number_lines{
     background: #163042;
     color: gray;
-    padding-right: 20px;
+    padding-right: 20px;    
 }
 
-.parentesis{
+.operator{
     color: #ffc600;
+}
+
+.function{
+    color: #ff9d00;
+}
+
+.var{
+    color: white;
 }
 

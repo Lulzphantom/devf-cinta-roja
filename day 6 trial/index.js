@@ -16,11 +16,18 @@ app.get('/', (request, response) => {
     response.status(200).sendFile(homeView);   
 });
 
+app.get('/views/styles/:file' , (request, response) => {
+    const {file} = request.params;
+    const style = `${__dirname}/views/styles/${file}`;
+    response.status(200).sendFile(style);
+})
+
 app.get('/function/:funct', (request, response) => {
     const {funct} = request.params;
     const view = `${__dirname}/views/${funct}.html`;
     response.status(200).sendFile(view);
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server up on ${PORT}`);
