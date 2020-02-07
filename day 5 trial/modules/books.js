@@ -25,5 +25,4 @@ module.exports = class books {
 
         return new reqProm(options);
     }
-
 }

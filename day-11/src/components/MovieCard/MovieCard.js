@@ -1,56 +1,94 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import './movieCard.scss';
+import MovieForm from '../MovieForm/MovieForm';
+import MovieApi from '../../modules/movies';
+
 
 
 export default class MovieCard extends Component {     
 
-    edit = () => {
-        Swal.fire('Any fool can use a computer');
+    // Edit movie
+    edit = async (id, title, description, image, director) => {
+        let editForm = new MovieForm();
+        editForm.showForm(false, title, description, image, director)
+            .then((movieObject) => {
+                if (movieObject !== null) {
+                    new MovieApi().editMovie(id, movieObject)
+                        .then((result) => {
+                            
+                        }).catch((err) => {
+                            Swal.fire(
+                                'Error!',
+                                `${err}`,
+                                'error'
+                            );
+                        });
+                } 
+            }).catch((err) => {
+                
+            });
     }  
 
-
-    deleteMovie = (movieId, movieTitle) => {
+    // Delete movie
+    delete = (movieId, movieTitle) => {
         Swal.fire({
             title: `Desea eliminar ${movieTitle}?`,
             text: "Se eliminara la pelicula de forma permanente!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Eliminar!'
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6a1b9a',
+            confirmButtonText: 'Eliminar!',
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+                // Result Alerts
+                new MovieApi().deleteMovie(movieId)
+                    .then((result) => {
+                        Swal.fire(
+                            'Eliminada!',
+                            'La pelicula fue eliminada.',
+                            'success'
+                        );
+                    }).catch((err) => {
+                        console.log(err);
+                        Swal.fire(
+                            'Error!',
+                            `${err}`,
+                            'error'
+                        );
+                    });
+                
             }
         })
     }
 
     render() {
 
+        var controlColor = 'purple darken-1';
+
         const {id, title, year, description, image, theme, director} = this.props;
         return (
             <div>
-                <div className="col s12 m2">
+                <div className="col s12 m6 l2">
                         <div className="card">
                             <div className="card-image">
-                                <img src={image} alt="movie"/>
-                                <span className="card-title">{title}</span>
-                                <a onClick={this.edit} className="btn-floating halfway-fab waves-effect waves-light orange darken-3"><i class="material-icons">edit</i></a>
+                                <img className="cardimg" src={image} alt="movie"/>
+                                <div className="card-title">
+                                {title}
+                                </div>
+                                <a onClick={this.edit.bind(this, id, title, description, image, director)} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}><i className="material-icons">edit</i></a>
                             </div>
                             <div className="card-content">
-                                <p><strong>Descripcion:</strong> {description}</p><br></br>    
+                                <p title={description}><strong>Descripcion:</strong> {description}</p><br></br>    
                                 <p><strong>Año:</strong> {year}</p>
                                 <p><strong>Director:</strong> {director}</p>
                                 <p><strong>Tema:</strong> {theme}</p>                   
                             </div>
                             <div className="card-action center">
-                                    <button onClick={this.deleteMovie.bind(this, id, title)} class="btn waves-effect waves-light orange darken-3" type="submit" name="action">Eliminar
-                                        <i class="material-icons right">delete</i>
+                                    <button onClick={this.delete.bind(this, id, title)} className={`btn waves-effect waves-light ${controlColor}`} type="submit" name="action">Eliminar
+                                        <i className="material-icons left">delete</i>
                                     </button>                                
                             </div>                   
                         </div>

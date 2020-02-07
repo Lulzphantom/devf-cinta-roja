@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import axios from 'axios';
+import MovieApi from '../../modules/movies';
 
 export const MoviesContainer = () => {
 
@@ -8,7 +8,8 @@ export const MoviesContainer = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        axios.get('https://devf-movies.herokuapp.com/api/v1/getMovies')
+        let movieRequest = new MovieApi().getAllMovies();
+        movieRequest
             .then((movies) => {
                 setMovies(movies.data)
             }).catch((err) => {
@@ -21,7 +22,7 @@ export const MoviesContainer = () => {
             <section>
                 <div className="row">
                     {movies.map(movie => (
-                        <MovieCard 
+                        <MovieCard
                         id={movie._id}
                         image={movie.image}
                         title={movie.title}

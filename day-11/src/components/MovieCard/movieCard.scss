@@ -1,4 +1,30 @@
+.card {
+    border-radius: 15px; 
+}
 
-.movie :hover{
-    box-shadow: 10px 5px 5px rgba(0,0,0,0.14);
+.card .card-action:last-child{
+    border-radius: 15px;
+}
+
+.card .card-image img{
+    border-radius: 15px;
+    max-height: 500px;
+    min-height: 500px;
+    object-fit: cover;
+}
+
+.card .card-image .card-title{
+    background: rgba($color: #000000, $alpha: 0.8);
+    min-width: 100%;
+    font-weight: 400;
+}
+
+.btn{
+    border-radius: 8px;
+}
+
+.card .card-content p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
