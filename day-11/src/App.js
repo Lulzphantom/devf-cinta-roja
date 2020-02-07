@@ -29,15 +29,17 @@ function App() {
 
     return (
         <div>
-            <nav>
-                <div className="nav-wrapper purple darken-4">
-                    <a href="#" className="brand-logo center">Dev.f Peliculas</a>
-                    <a onClick={newMovie.bind(this)} className="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i className="material-icons">add</i></a>
-                </div>
-            </nav>
+            <div className="navbar-fixed">
+                <nav>
+                    <div className="nav-wrapper purple darken-4">
+                        <a href="#" className="brand-logo center"><i class="material-icons">movie</i>Dev.f</a>
+                        <a onClick={newMovie.bind(this)} className="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i className="material-icons">add</i></a>
+                    </div>
+                </nav>
+            </div>            
             <br />
             <MoviesContainer />
-        </div>
+        </div>       
     );
 }
 

@@ -8,12 +8,12 @@ export default class MovieForm extends Component {
     datePickerClick = () => {
         var elem = document.querySelectorAll('.datepicker');
         var instance = m.Datepicker.getInstance(elem);
-        instance.open();
-    }
+        instance.open();}
     
     showForm = async (newItem, title, description, image, director) => {
+
         const { value: formValues } = await Swal.fire({
-            title: `${newItem === true ? 'Nueva pelicula' : 'Editar pelicula'}`,
+            title: `${newItem === true ? 'Nueva pelicula' : 'Editar pelicula'}`,            
             html:
                 '<div class="row">'+
                 '<form class="col s12">'+
@@ -31,6 +31,18 @@ export default class MovieForm extends Component {
                 '</div>'+
                 '</div>'+
                 '<div class="row">'+
+                '<div class="input-field col s12">Tema:'+
+                '<select>'+
+                '<option value="" disabled>Choose your option</option>'+
+                '<option value="1" selected>Accion</option>'+
+                '<option value="2">Comedia</option>'+
+                '<option value="3">Drama</option>'+
+                '<option value="3">Infantil</option>'+
+                '<option value="3">Terror</option>'+
+                '</select>'+
+                '</div>'+
+                '</div>'+
+                '<div class="row">'+
                 '<div class="input-field col s12">URL de Imagen:'+
                 `<input id="image" type="text" class="validate"  value="${newItem === true ? '' : image}">`+
                 '</div>'+
@@ -45,6 +57,9 @@ export default class MovieForm extends Component {
             focusConfirm: false,
             confirmButtonText: `${newItem === true ? 'Crear pelicula' : 'Guardar pelicula'}`,
             confirmButtonColor: '#6a1b9a',
+            cancelButtonText: 'Cancelar',
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
             preConfirm: () => {
                 return {
                     title: document.getElementById('title').value,
