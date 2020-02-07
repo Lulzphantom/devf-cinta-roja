@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 mongoose.connect(MONGO.URI, {useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Db Connected'))
-    .catch((err) => err);
+    .catch((err) => console.log(err));
 
 app.use('/', router);
 
