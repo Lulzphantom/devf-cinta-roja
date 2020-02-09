@@ -3,11 +3,15 @@ import Swal from 'sweetalert2';
 import './movieCard.scss';
 import MovieForm from '../MovieForm/MovieForm';
 import MovieApi from '../../modules/movies';
+import m from 'materialize-css';
 
 
 
 export default class MovieCard extends Component {     
 
+    componentDidMount(){
+        m.AutoInit();
+    }
     // Edit movie
     edit = async (id, title, description, image, director) => {
         let editForm = new MovieForm();
@@ -71,13 +75,14 @@ export default class MovieCard extends Component {
         const {id, title, year, description, image, theme, director} = this.props;
         return (
             <div>
-                <div className="col s12 m6 l2">
-                        <div className="card">
+                <div className="col s12 m6 l3">
+                        <div className="card z-depth-5">
                             <div className="card-image">
                                 <img className="cardimg" src={image} alt="movie"/>
                                 <div className="card-title">
                                 {title}
-                                </div>
+                                </div>                                
+                                {/* <a onClick={<MovieForm />} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}><i className="material-icons">edit</i></a> */}
                                 <a onClick={this.edit.bind(this, id, title, description, image, director)} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}><i className="material-icons">edit</i></a>
                             </div>
                             <div className="card-content">

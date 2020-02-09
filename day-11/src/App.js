@@ -1,12 +1,14 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { MoviesContainer } from './containers/movies/MoviesContainer';
 import './App.scss';
 import MovieForm from './components/MovieForm/MovieForm';
 import MovieApi from './modules/movies';
 import m from 'materialize-css';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
-
+    
     m.AutoInit();
 
     //Create new movie
@@ -28,17 +30,14 @@ function App() {
     }
 
     return (
-        <div>
-            <div className="navbar-fixed">
-                <nav>
-                    <div className="nav-wrapper purple darken-4">
-                        <a href="#" className="brand-logo center"><i class="material-icons">movie</i>Dev.f</a>
-                        <a onClick={newMovie.bind(this)} className="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i className="material-icons">add</i></a>
-                    </div>
-                </nav>
-            </div>            
-            <br />
-            <MoviesContainer />
+        <div>     
+            <BrowserRouter>
+            <NavBar/>
+            <br/>
+            <Route exact path="/" component={MoviesContainer}/>
+            <Route exact path="/addMovie" component={MoviesContainer}/>
+            </BrowserRouter>
+            
         </div>       
     );
 }
