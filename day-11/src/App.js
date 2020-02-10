@@ -6,6 +6,7 @@ import MovieForm from './components/MovieForm/MovieForm';
 import MovieApi from './modules/movies';
 import m from 'materialize-css';
 import NavBar from './components/NavBar/NavBar';
+import { FormContainer } from './containers/form/FormContainer';
 
 function App() {
     
@@ -33,9 +34,9 @@ function App() {
         <div>     
             <BrowserRouter>
             <NavBar/>
-            <br/>
             <Route exact path="/" component={MoviesContainer}/>
-            <Route exact path="/addMovie" component={MoviesContainer}/>
+            <Route exact path="/editMovie/:movieId" component={FormContainer}/>
+            <Route exact path="/addMovie/" component={FormContainer}/>
             </BrowserRouter>
             
         </div>       

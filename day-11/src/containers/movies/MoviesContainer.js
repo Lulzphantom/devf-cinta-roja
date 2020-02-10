@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import MovieApi from '../../modules/movies';
+import './moviesContainer.scss';
 
 export const MoviesContainer = () => {
 
@@ -20,7 +21,7 @@ export const MoviesContainer = () => {
     return (
         <div>
             <section>
-                <div className="row">
+                <div className="row mContainer">
                     {movies.map(movie => (
                         <MovieCard
                         id={movie._id}

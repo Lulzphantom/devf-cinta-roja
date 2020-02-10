@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './movieCard.scss';
 import MovieForm from '../MovieForm/MovieForm';
@@ -73,6 +74,7 @@ export default class MovieCard extends Component {
         var controlColor = 'purple darken-1';
 
         const {id, title, year, description, image, theme, director} = this.props;
+        
         return (
             <div>
                 <div className="col s12 m6 l3">
@@ -81,9 +83,10 @@ export default class MovieCard extends Component {
                                 <img className="cardimg" src={image} alt="movie"/>
                                 <div className="card-title">
                                 {title}
-                                </div>                                
-                                {/* <a onClick={<MovieForm />} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}><i className="material-icons">edit</i></a> */}
-                                <a onClick={this.edit.bind(this, id, title, description, image, director)} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}><i className="material-icons">edit</i></a>
+                                </div> 
+                                <Link to={`/editMovie/${id}`} className={`btn-floating halfway-fab waves-effect waves-light ${controlColor}`}>
+                                    <i className="material-icons">edit</i>
+                                </Link>
                             </div>
                             <div className="card-content">
                                 <p title={description}><strong>Descripcion:</strong> {description}</p><br></br>    

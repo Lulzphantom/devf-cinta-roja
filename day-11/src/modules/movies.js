@@ -12,6 +12,10 @@ export default class MovieApi{
         return axios.get(`${movieApiUrl}/getMovies`);
     }
 
+    getMovieById = (movieId) => {
+        return axios.get(`${movieApiUrl}/getMovieById?id=${movieId}`);
+    }
+
     // Edit movie
     editMovie = (movieId, movieObject) => {
         return axios.patch(`${movieApiUrl}/patchMovieById?id=${movieId}`, movieObject);
